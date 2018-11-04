@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+:root {
+    --bg-dark-color: #141a1d;
+    --bg-color: #1A2226;
+    --color-primary: #e67e22;
+    --color-primary-hover: #ff8b25;
+    --color-secondary-hover: #ffad66;
+    --color-secondary: #AFD702;
+    --color-white: white;
+}
+
+@font-face {
+    font-family: "pressStart";
+    src: url("./assets/fonts/PressStart2P-Regular.ttf");
+}
+
+@font-face {
+    font-family: "point";
+    src: url("./assets/fonts/point.ttf");
+}
+
+
+@font-face {
+    font-family: "pixel";
+    src: url("./assets/fonts/pixel.ttf");
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+
+    input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 50px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+}
+
+.disabled {
+    img {
+        opacity: .5;
+    }
+}
+
+.container {
+    color: white;
+}
+
+canvas,
+img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+}
+
+.container {
+    color: white;
+}
+
+// Input styles
+.btn-input {
+    display: inline-block;
+    transition: .5s transform;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.no-drop {
+    cursor: no-drop;
+}
+
+.copy {
+    cursor: copy;
+}
+
+.zoom-in {
+    cursor: zoom-in !important;
+}
+
+.zoom-out {
+    cursor: zoom-out !important;
+}

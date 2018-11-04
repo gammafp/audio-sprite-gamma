@@ -1,0 +1,75 @@
+<nav class="menu text-center d-flex justify-content-between align-items-center">
+    <span class="logo ml-5">
+        <img src="./assets/img/logo_gamma.png">
+    </span>
+    <span class="title mr-5">
+        Audio Sprite Gamma
+    </span>
+</nav>
+
+<main class="container">
+    <div class="row gamma my-4 justify-content-center">
+        <section class="col-12 col-xs-11 col-md-9 col-lg-7 list p-0">
+            <header class="list-header text-center">
+                <div class="fileUpload btn-input mr-4">
+                    <span>
+                        <img src="./assets/img/import_audio.png" class="btn-image-md img-crisp">
+                    </span>
+                    <input type="file" class="upload" id="uploadFilesMulti" (change)="uploadAudios($event)" multiple
+                        title="Click to import audio">
+                </div>
+            </header>
+            <!-- Listas de audios -->
+            <perfect-scrollbar class="list-audio container-fluid px-0">
+                <div class="row px-0" *ngIf="listAudios.length === 0">
+                    <div class="col-11 p-4 text-center">
+                        Import your's audios files <br> (mp3, ogg, wav or asf) :D
+                    </div>
+                </div>
+                <div class="row list-audio-row px-0" *ngFor="let listAudio of listAudios" draggable droppable (onDrop)="onItemDrop($event, listAudio)"
+                    [dragData]="listAudio">
+                    <div class="ps list-audio-row-title col-8 pl-4 pr-0 pointer" [perfectScrollbar]="configScroll"
+                        (dblclick)="changeName(listAudio.id)">
+                        <span>
+                            <img src="./assets/img/drag_drop.png" class="img-crisp">
+                        </span>
+                        {{listAudio.name}}
+                    </div>
+                    <div class="col-4 px-0 text-center">
+                        <span class="pointer" title="play" (click)="play(listAudio.url)">
+                            <img src="./assets/img/play.png" class="btn-image-md img-crisp">
+                        </span>
+                        <span class="mx-3 pointer" title="stop" (click)="stop()">
+                            <img src="./assets/img/stop.png" class="btn-image-md img-crisp">
+                        </span>
+                        <span class="pointer" title="delete" (click)="delete(listAudio.id)">
+                            <img src="./assets/img/trash.png" class="btn-image-md img-crisp">
+                        </span>
+                    </div>
+                </div>
+
+            </perfect-scrollbar>
+            <footer class="list-footer text-center py-3">
+                <div class="mr-4 no-drop disabled" *ngIf="listAudios.length === 0">
+
+                    <img src="./assets/img/export_audio.png" class="btn-image-md img-crisp">
+
+                </div>
+                <div class="fileUpload btn-input mr-4 pointer" (click)="concatAudio()" *ngIf="listAudios.length > 0" title="Export audio sprite">
+
+                    <img src="./assets/img/export_audio.png" class="btn-image-md img-crisp">
+
+                </div>
+            </footer>
+        </section>
+    </div>
+</main>
+
+<footer class="mainFooter d-flex justify-content-center align-items-center">
+    <span class="title-footer">
+        <span class="text-white">Created by: </span><a href="https://github.com/gammafp">Gammafp</a> &
+        <a href="https://twitter.com/veryeviltomato/media">Evil tomato</a>
+    </span>
+</footer>
+
+<app-loader *ngIf="loader"></app-loader>
